@@ -19,6 +19,11 @@ beforeEach(function () {
     CleaningSchedule::query()->delete();
 });
 
+afterEach(function () {
+    restore_error_handler();
+    restore_exception_handler();
+});
+
 it('generates cleaning schedules correctly', function () {
     Cleaner::factory()->count(3)->create(['region' => '埼玉南部']);
     Cleaner::factory()->count(8)->create(['region' => '東京23区']);
